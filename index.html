@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>DUCK KILLER</title>
+	<style type="text/css">
+		.box{
+            background-image: url(1.png);
+            background-size: 100% 100%;
+            width:100px;
+            height:100px;
+            position: absolute;
+        }
+	</style>
+</head>
+<body style="background-image: url(backgroud.jpg);background-size: cover;">
+<h1>Твой Счет:<span class="score">0</span></h1>
+
+
+<script type="text/javascript">
+	 
+	 	let ScoreElem = document.querySelector(".score")
+	 	let S = 0
+
+
+		let TimeUp = setTimeout (finish,10000)
+
+		function finish(){
+			
+			if (S >= 150) {
+				alert("Grove st. WIN!")
+			}
+
+			else {
+				alert("Grove st. Lose!")
+
+			}
+		}
+
+	 	function getRandom(num){
+			let rand = Math.random() * num;
+			let round = Math.round(rand);
+			return round;
+	 	}
+
+	 	let y = [200, 400, 600]
+	 	let img_url = ["1.png", "2.png", "3.png"] 
+
+        function create(){
+
+        	let elem = document.createElement('div'); 
+        	document.body.appendChild(elem); 	
+        	elem.classList.add("box"); 
+        	elem.style.left = getRandom(1600)  + "px"
+        	elem.style.top = y[getRandom(2)] + "px"
+        	elem.style.backgroundImage = "url(" + img_url[getRandom(2)] + ")"
+        	elem.onclick = function(){
+        		elem.style.display = "none"
+        		S = S + 10
+        		ScoreElem.innerHTML = S
+        	}
+        }
+
+        setInterval (create,500)
+
+
+</script>
+</body>
+</html>
